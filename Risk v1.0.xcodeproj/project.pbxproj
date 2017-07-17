@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF331D341EEDAB3E00C078F1 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF331D331EEDAB3E00C078F1 /* player.cpp */; };
+		FFB225C41EF072D40039A832 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFB225C21EF072D40039A832 /* game.cpp */; };
+		FFB225CD1EF077100039A832 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB225CC1EF077100039A832 /* libSDL2-2.0.0.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		FFB225CF1EF0771D0039A832 /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB225CE1EF0771D0039A832 /* libSDL2_image-2.0.0.dylib */; };
+		FFB225D11EF0772A0039A832 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB225D01EF0772A0039A832 /* libSDL2_ttf-2.0.0.dylib */; };
 		FFCFA5A61EEC95AE005D8445 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFCFA5A51EEC95AE005D8445 /* main.cpp */; };
+		FFE2244C1EED037500A1E40E /* territory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE2244B1EED037500A1E40E /* territory.cpp */; };
+		FFE942A81F1D329D000AE9E6 /* battleSim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFE942A61F1D329D000AE9E6 /* battleSim.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +30,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF12F74A1F17E12900EBA081 /* Project Overview.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Project Overview.rtf"; sourceTree = "<group>"; };
+		FF331D331EEDAB3E00C078F1 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		FFB225C21EF072D40039A832 /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		FFB225C31EF072D40039A832 /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		FFB225CC1EF077100039A832 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2/2.0.5/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		FFB225CE1EF0771D0039A832 /* libSDL2_image-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_image-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2_image/2.0.1_2/lib/libSDL2_image-2.0.0.dylib"; sourceTree = "<group>"; };
+		FFB225D01EF0772A0039A832 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2_ttf/2.0.14/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		FFCFA5A21EEC95AE005D8445 /* Risk v1.0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Risk v1.0"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCFA5A51EEC95AE005D8445 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FFE224491EECFE6100A1E40E /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
+		FFE2244A1EED01C200A1E40E /* territory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = territory.h; sourceTree = "<group>"; };
+		FFE2244B1EED037500A1E40E /* territory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = territory.cpp; sourceTree = "<group>"; };
+		FFE942A61F1D329D000AE9E6 /* battleSim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battleSim.cpp; sourceTree = "<group>"; };
+		FFE942A71F1D329D000AE9E6 /* battleSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = battleSim.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,17 +51,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB225D11EF0772A0039A832 /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
+				FFB225CF1EF0771D0039A832 /* libSDL2_image-2.0.0.dylib in Frameworks */,
+				FFB225CD1EF077100039A832 /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FFB225C51EF076FC0039A832 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFB225D01EF0772A0039A832 /* libSDL2_ttf-2.0.0.dylib */,
+				FFB225CE1EF0771D0039A832 /* libSDL2_image-2.0.0.dylib */,
+				FFB225CC1EF077100039A832 /* libSDL2-2.0.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FFCFA5991EEC95AE005D8445 = {
 			isa = PBXGroup;
 			children = (
 				FFCFA5A41EEC95AE005D8445 /* Risk v1.0 */,
 				FFCFA5A31EEC95AE005D8445 /* Products */,
+				FFB225C51EF076FC0039A832 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +91,15 @@
 			isa = PBXGroup;
 			children = (
 				FFCFA5A51EEC95AE005D8445 /* main.cpp */,
+				FFB225C31EF072D40039A832 /* game.h */,
+				FFB225C21EF072D40039A832 /* game.cpp */,
+				FFE224491EECFE6100A1E40E /* player.h */,
+				FF331D331EEDAB3E00C078F1 /* player.cpp */,
+				FFE2244A1EED01C200A1E40E /* territory.h */,
+				FFE2244B1EED037500A1E40E /* territory.cpp */,
+				FFE942A71F1D329D000AE9E6 /* battleSim.h */,
+				FFE942A61F1D329D000AE9E6 /* battleSim.cpp */,
+				FF12F74A1F17E12900EBA081 /* Project Overview.rtf */,
 			);
 			path = "Risk v1.0";
 			sourceTree = "<group>";
@@ -119,7 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE2244C1EED037500A1E40E /* territory.cpp in Sources */,
 				FFCFA5A61EEC95AE005D8445 /* main.cpp in Sources */,
+				FF331D341EEDAB3E00C078F1 /* player.cpp in Sources */,
+				FFB225C41EF072D40039A832 /* game.cpp in Sources */,
+				FFE942A81F1D329D000AE9E6 /* battleSim.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +264,16 @@
 		FFCFA5AA1EEC95AE005D8445 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_SUSPICIOUS_MOVE = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.5/lib,
+					/usr/local/Cellar/sdl2_image/2.0.1_2/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.14/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,6 +281,16 @@
 		FFCFA5AB1EEC95AE005D8445 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_SUSPICIOUS_MOVE = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.5/lib,
+					/usr/local/Cellar/sdl2_image/2.0.1_2/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.14/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -248,6 +314,7 @@
 				FFCFA5AB1EEC95AE005D8445 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
