@@ -12,7 +12,7 @@
 
 class Player {
 private:
-    std::list<Territory> playerTerritories;
+    int numTerritories;
     std::string playerType;
     int reinforcements;
     bool once;
@@ -20,15 +20,14 @@ private:
 public:
     Player(std::string newPlayer, std::list<Territory> masterList) {
         playerType = newPlayer;
-        seedPlayerTerritories(masterList, newPlayer);
+        setNumTerritories(masterList, newPlayer);
         reinforcements = 0;
         once = true;
     }
     
-    void seedPlayerTerritories(std::list<Territory> masterList, std::string playerName);
-    bool isAlive() {return playerTerritories.size() > 0;}
-    void display();
-    long getNumTerritories() { return playerTerritories.size();}
+    void setNumTerritories(std::list<Territory> masterList, std::string playerName);
+    bool isAlive() {return numTerritories > 0;}
+    long getNumTerritories() { return numTerritories;}
     void setReinforcements(int re) { reinforcements = re; once = false;}
     int getReinforcements() { return reinforcements; }
     

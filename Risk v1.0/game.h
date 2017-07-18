@@ -63,6 +63,7 @@ private:
     char click1Display[24] = "None";
     char click2Text[13] = "Attacking = ";
     char click2Display[24] = "None";
+    char endButton[10] = "End Phase";
     
     std::string currTurn;
     
@@ -109,7 +110,7 @@ public:
     void run();
     SDL_Color ownerColor(Territory value);
     SDL_Rect getPosition(int i);
-    void getClickPos(int x, int y, std::string currTurn, std::list<Territory> &masterList,
+    void getClickPos(int x, int y, std::string &currTurn, std::list<Territory> &masterList,
                      std::string &click1, std::string &click2);
 };
 

@@ -71,6 +71,7 @@ void Game::run() {
                 human->setReinforcements(human->getNumTerritories() / 3);
         }
 
+        //This begins whenever there's an event (ie. mouse click and such)
         if (SDL_PollEvent(&windowEvent))
         {
             if (windowEvent.type == SDL_MOUSEBUTTONDOWN )
@@ -78,10 +79,15 @@ void Game::run() {
                 //If the left mouse button was pressed
                 if( windowEvent.button.button == SDL_BUTTON_LEFT )
                 {
-                    //This if statement will handle click events for the battle phase
-                    if (currTurn == "battle")
+                    //This if statement will handle click events for the battle and move phases
+                    if (currTurn == "battle" || currTurn == "move")
                     {
                         getClickPos(windowEvent.button.x, windowEvent.button.y, currTurn, territories, click1, click2);
+                        
+                        if (currTurn == "reinforce")
+                        {
+                            human->setOnce(true);
+                        }
                     }
                     
                     //Only valid if the human player has reinforcements left
@@ -151,6 +157,8 @@ void Game::run() {
         SDL_BlitSurface(message, NULL, windowSurface, &postText);
         SDL_FreeSurface(message);
         
+        
+        human->setNumTerritories(territories, "Human");
         postText.x = 150;
         postText.y = 15;
         sprintf(ptNum, "%ld", human->getNumTerritories());
@@ -238,6 +246,18 @@ void Game::run() {
         message = TTF_RenderText_Solid( font, click2Display, textColor);
         SDL_BlitSurface(message, NULL, windowSurface, &postText);
         SDL_FreeSurface(message);
+        
+        //End phase button
+        if (currTurn == "battle" || currTurn == "move")
+        {
+            postText.x = 600;
+            postText.y = 570;
+            textColor = { 0, 0, 0 };
+            message = TTF_RenderText_Solid( font, endButton, textColor);
+            SDL_BlitSurface(message, NULL, windowSurface, &postText);
+            SDL_FreeSurface(message);
+        }
+        
         //This section is testing how to orchestrate turn order
         if (currTurn == "initial")
         {
@@ -549,7 +569,7 @@ SDL_Rect Game::getPosition(int i){
  * -getClickPos will determin if a click was in a territory and handle
  *  current turn order accordingly
  *********************************************************************/
-void Game::getClickPos(int x, int y, std::string currTurn, std::list<Territory> &masterList,
+void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory> &masterList,
                        std::string &click1, std::string &click2)
 {
     std::list<Territory>::iterator it = masterList.begin();
@@ -1876,6 +1896,21 @@ void Game::getClickPos(int x, int y, std::string currTurn, std::list<Territory> 
             {
                 click2 = "Eastern Australia";
             }
+        }
+    }
+    
+    if (x  > 600 && y > 570
+             && x < 650 && y < 600)
+    {
+        if (currTurn == "battle")
+        {
+            currTurn = "move";
+            click1 = "";
+            click2 = "";
+        }
+        else if (currTurn == "move")
+        {
+            currTurn = "reinforce";
         }
     }
     
