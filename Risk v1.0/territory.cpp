@@ -300,6 +300,7 @@ std::list<std::string> Territory::connectTerritories(std::string name) {
     }
     else if (name == "Western Australia")
     {
+        ctList.push_back("Indonesia");
         ctList.push_back("Eastern Australia");
         ctList.push_back("New Guinea");
     }
@@ -694,7 +695,8 @@ std::list<Territory> Territory::seedTerritories() {
 
 /*********************************************************************
  * -findTerritory will find a specific territory from the master list and
- *  return it
+ *  return it. This function is specifically for getting Army values
+ *  on the board
  *********************************************************************/
 Territory Territory::findTerritory(int i, std::list<Territory> masterList){
     Territory found;

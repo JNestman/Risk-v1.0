@@ -37,6 +37,8 @@ public:
     
     void botInitialArmy(std::list<Territory> &masterList, std::string playerName);
     
+    int getContBonus(std::list<Territory> masterList, std::string playerName);
+    
 };
 
 #endif /* player_h */

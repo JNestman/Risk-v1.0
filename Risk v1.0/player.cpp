@@ -9,8 +9,8 @@
 #include "player.h"
 
 /*********************************************************************
- * -seedPlayerTerritories: This function will seed the initial territories
- *  for each player
+ * -setNumTerritories: This function will set the number of territories
+ *  for a given player
  *********************************************************************/
 void Player::setNumTerritories(std::list<Territory> masterList, std::string playerName)
 {
@@ -23,8 +23,8 @@ void Player::setNumTerritories(std::list<Territory> masterList, std::string play
 }
 
 /*********************************************************************
- * -seedPlayerTerritories: This function will seed the initial territories
- *  for each player
+ * -botInitialArmy: This will set go out and set the board for the initial
+ *  phase
  *********************************************************************/
 void Player::botInitialArmy(std::list<Territory> &masterList, std::string playerName)
 {
@@ -40,3 +40,87 @@ void Player::botInitialArmy(std::list<Territory> &masterList, std::string player
     }
 }
 
+/*********************************************************************
+ * -botInitialArmy: This will set go out and set the board for the initial
+ *  phase
+ *********************************************************************/
+int Player::getContBonus(std::list<Territory> masterList, std::string playerName)
+{
+    int bonus = 0;
+    bool owns = true;
+    
+    std::list<Territory>::iterator it = masterList.begin();
+    //North America bonus
+    while (it->getName() != "Venezuala")
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 5;
+    
+    owns = true;
+    while (it->getName() != "North Africa")
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 2;
+    
+    owns = true;
+    while (it->getName() != "Western Europe")
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 3;
+    
+    owns = true;
+    while (it->getName() != "Middle East")
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 5;
+    
+    owns = true;
+    while (it->getName() != "Indonesia")
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 7;
+    
+    owns = true;
+    while (it != masterList.end())
+    {
+        if (it->getOwner() == playerName && owns)
+            owns = true;
+        else
+            owns = false;
+        it++;
+    }
+    if (owns)
+        bonus += 2;
+    
+    return bonus;
+}

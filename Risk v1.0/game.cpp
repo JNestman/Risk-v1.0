@@ -66,9 +66,9 @@ void Game::run() {
         if (currTurn == "reinforce" && human->getOnce())
         {
             if (human->getNumTerritories() / 3 < 3)
-                human->setReinforcements(3);
+                human->setReinforcements(3 + human->getContBonus(territories, "Human"));
             else
-                human->setReinforcements(human->getNumTerritories() / 3);
+                human->setReinforcements((human->getNumTerritories() / 3) + human->getContBonus(territories, "Human"));
         }
 
         //This begins whenever there's an event (ie. mouse click and such)
