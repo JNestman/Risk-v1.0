@@ -7,6 +7,9 @@
 //
 
 #include "battleSim.h"
+/*********************************************************************
+ * -findHighest will return the highest number from a group of three
+ *********************************************************************/
 int BattleSim::findHighest(int aR1, int aR2, int aR3)
 {
     if (aR1 >= aR2 && aR1 >= aR3)
@@ -17,6 +20,9 @@ int BattleSim::findHighest(int aR1, int aR2, int aR3)
         return aR3;
 }
 
+/*********************************************************************
+ * -findSecond will return the second highest number from a group of three
+ *********************************************************************/
 int BattleSim::findSecond(int aR1, int aR2, int aR3, int high)
 {
     int low = 0;
@@ -37,6 +43,9 @@ int BattleSim::findSecond(int aR1, int aR2, int aR3, int high)
     
 }
 
+/*********************************************************************
+ * -fightBattle will simulate the battles for the game
+ *********************************************************************/
 void BattleSim::fightBattle(std::list<Territory> &masterList, std::string click1, std::string click2)
 {
     std::list<Territory>::iterator attackArmy;
@@ -163,3 +172,29 @@ void BattleSim::fightBattle(std::list<Territory> &masterList, std::string click1
         attackArmy->setArmyValue(1);
     }
 }
+
+/*********************************************************************
+ * -moveArmy will move all but one unit from one territory to another
+ *  (subject to change)
+ *********************************************************************/
+void BattleSim::moveArmy(std::list<Territory> &masterList, std::string click1, std::string click2)
+{
+    std::list<Territory>::iterator moveFrom;
+    std::list<Territory>::iterator moveTo;
+    for (moveFrom = masterList.begin(); moveFrom != masterList.end(); moveFrom++)
+    {
+        if (moveFrom->getName() == click1)
+            break;
+        
+    }
+    for (moveTo = masterList.begin(); moveTo != masterList.end(); moveTo++)
+    {
+        if (moveTo->getName() == click2)
+            break;
+        
+    }
+    
+    moveTo->setArmyValue(moveFrom->getArmyValue());
+    moveFrom->setArmyValue(1);
+}
+

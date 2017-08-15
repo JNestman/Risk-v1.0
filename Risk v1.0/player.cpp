@@ -124,3 +124,20 @@ int Player::getContBonus(std::list<Territory> masterList, std::string playerName
     
     return bonus;
 }
+
+/*********************************************************************
+ * -handleBotTurn will.... handle the bot's turn... shocking
+ *********************************************************************/
+void Player::handleBotTurn(std::list<Territory> &masterList, std::string playerName)
+{
+    std::list<Territory>::iterator it;
+
+    for (it = masterList.begin(); it != masterList.end(); it++)
+    {
+        if (it->getOwner() == playerName)
+        {
+            
+        }
+    }
+}
+

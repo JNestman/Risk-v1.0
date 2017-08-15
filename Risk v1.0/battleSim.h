@@ -31,6 +31,8 @@ public:
     
     void fightBattle(std::list<Territory> &masterList, std::string click1, std::string click2);
 
+    void moveArmy(std::list<Territory> &masterList, std::string click1, std::string click2);
+
 };
 
 #endif /* battleSim_h */

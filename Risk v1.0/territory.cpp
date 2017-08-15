@@ -423,7 +423,7 @@ std::list<Territory> Territory::seedTerritories() {
     insertTerritory.setName("Central America");
     insertTerritory.setOwner(seedOwner(human, bot1, bot2, bot3, bot4, r));
     insertTerritory.setArmyValue(1);
-    insertTerritory.setConnectedTo(connectTerritories("Eastern Canada"));
+    insertTerritory.setConnectedTo(connectTerritories("Central America"));
     initialSeed.push_back(insertTerritory);
     r++;
     if (r == 5)

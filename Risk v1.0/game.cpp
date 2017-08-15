@@ -38,8 +38,7 @@ void Game::run() {
         return;
     }
     
-    //Create the window event
-    //SDL_Event windowEvent;
+    //Give the image surface something to display
     
     imageSurface = IMG_Load("Risk01.jpg");
     
@@ -601,6 +600,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Alaska";                           //if click one is selected and the next click is in a connected
             }                                                //territory, then that becomes click2
         }
+        else if (currTurn == "move")                         //How to handle the move phase for now
+        {
+            if (click1 == "" && (it->getOwner() == "Human")) //if it is the first click and human
+            {
+                click1 = "Alaska";                           //Set click one to that territory
+            }
+            else if (click1 == "Alaska")                     //click again to deselect
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Alaska";                           //if click one is selected and the next click is also owned
+            }
+        }
     }
     else if (x > 85 && y > 110
              && x < 170 && y < 145) //Northwest Territory
@@ -631,6 +646,23 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Northwest Territory";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Northwest Territory";
+            }
+            else if (click1 == "Northwest Territory")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Northwest Territory";
+            }
+        }
+
     }
     else if (x > 270 && y > 70
              && x < 315 && y < 170) // Greenland
@@ -657,6 +689,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Greenland";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Greenland";
+            }
+            else if (click1 == "Greenland")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Greenland";
             }
@@ -691,6 +739,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Alberta";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Alberta";
+            }
+            else if (click1 == "Alberta")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Alberta";
+            }
+        }
     }
     else if (x > 160 && y > 155
              && x < 200 && y < 190) //Ontario
@@ -717,6 +781,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Ontario";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Ontario";
+            }
+            else if (click1 == "Ontario")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Ontario";
             }
@@ -751,6 +831,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Eastern Canada";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Eastern Canada";
+            }
+            else if (click1 == "Eastern Canada")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Eastern Canada";
+            }
+        }
     }
     else if (x > 90 && y > 210
              && x < 140 && y < 250) //Western United States
@@ -777,6 +873,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Western United States";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Western United States";
+            }
+            else if (click1 == "Western United States")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Western United States";
             }
@@ -811,6 +923,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Eastern United States";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Eastern United States";
+            }
+            else if (click1 == "Eastern United States")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Eastern United States";
+            }
+        }
     }
     else if (x > 100 && y > 270
              && x < 150 && y < 330) //Central America
@@ -837,6 +965,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Central America";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Central America";
+            }
+            else if (click1 == "Central America")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Central America";
             }
@@ -871,6 +1015,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Venezuala";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Venezuala";
+            }
+            else if (click1 == "Venezuala")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Venezuala";
+            }
+        }
     }
     else if (x > 175 && y > 390
              && x < 215 && y < 420) //Peru
@@ -897,6 +1057,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Peru";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Peru";
+            }
+            else if (click1 == "Peru")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Peru";
             }
@@ -932,6 +1108,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Argentina";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Argentina";
+            }
+            else if (click1 == "Argentina")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Argentina";
+            }
+        }
     }
     else if (x > 240 && y > 300
              && x < 300 && y < 450) //Brazil
@@ -959,6 +1151,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Brazil";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Brazil";
+            }
+            else if (click1 == "Brazil")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Brazil";
             }
@@ -994,6 +1202,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "North Africa";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "North Africa";
+            }
+            else if (click1 == "North Africa")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "North Africa";
+            }
+        }
     }
     else if (x > 410 && y > 400
              && x < 450 && y < 460) //Central Africa
@@ -1025,7 +1249,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Central Africa";
             }
         }
-        
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Central Africa";
+            }
+            else if (click1 == "Central Africa")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Central Africa";
+            }
+        }
     }
     else if (x > 410 && y > 470
              && x < 450 && y < 530) //South Africa
@@ -1057,7 +1296,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "South Africa";
             }
         }
-        
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "South Africa";
+            }
+            else if (click1 == "South Africa")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "South Africa";
+            }
+        }
     }
     else if (x > 500 && y > 460
              && x < 530 && y < 500) //Madagascar
@@ -1085,6 +1339,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Madagascar";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Madagascar";
+            }
+            else if (click1 == "Madagascar")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Madagascar";
             }
@@ -1120,6 +1390,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "East Africa";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "East Africa";
+            }
+            else if (click1 == "East Africa")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "East Africa";
+            }
+        }
     }
     else if (x > 410 && y > 320
              && x < 480 && y < 360) //Egypt
@@ -1147,6 +1433,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Egypt";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Egypt";
+            }
+            else if (click1 == "Egypt")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Egypt";
             }
@@ -1182,6 +1484,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Western Europe";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Western Europe";
+            }
+            else if (click1 == "Western Europe")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Western Europe";
+            }
+        }
     }
     else if (x > 310 && y > 180
              && x < 350 && y < 230) //Great Britian
@@ -1209,6 +1527,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Great Britian";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Great Britian";
+            }
+            else if (click1 == "Great Britian")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Great Britian";
             }
@@ -1245,6 +1579,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Iceland";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Iceland";
+            }
+            else if (click1 == "Iceland")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Iceland";
+            }
+        }
     }
     else if (x > 400 && y > 130
              && x < 450 && y < 170) //Scandinavia
@@ -1273,6 +1623,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Scandinavia";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Scandinavia";
+            }
+            else if (click1 == "Scandinavia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Scandinavia";
             }
@@ -1309,6 +1675,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Northern Europe";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Northern Europe";
+            }
+            else if (click1 == "Northern Europe")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Northern Europe";
+            }
+        }
     }
     else if (x > 395 && y > 265
              && x < 445 && y < 300) //Southern Europe
@@ -1337,6 +1719,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Southern Europe";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Southern Europe";
+            }
+            else if (click1 == "Southern Europe")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Southern Europe";
             }
@@ -1373,6 +1771,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Russia";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Russia";
+            }
+            else if (click1 == "Russia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Russia";
+            }
+        }
     }
     else if (x > 475 && y > 280
              && x < 530 && y < 370) //Middle East
@@ -1401,6 +1815,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Middle East";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Middle East";
+            }
+            else if (click1 == "Middle East")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Middle East";
             }
@@ -1437,6 +1867,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Afghanistan";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Afghanistan";
+            }
+            else if (click1 == "Afghanistan")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Afghanistan";
+            }
+        }
     }
     else if (x > 550 && y > 120
              && x < 580 && y < 200) //Ural
@@ -1465,6 +1911,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Ural";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Ural";
+            }
+            else if (click1 == "Ural")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Ural";
             }
@@ -1501,6 +1963,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Siberia";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Siberia";
+            }
+            else if (click1 == "Siberia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Siberia";
+            }
+        }
     }
     else if (x > 650 && y > 90
              && x < 690 && y < 140) //Yakutsk
@@ -1529,6 +2007,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                click2 = "";
            }
            else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+           {
+               click2 = "Yakutsk";
+           }
+       }
+       else if (currTurn == "move")
+       {
+           if (click1 == "" && (it->getOwner() == "Human"))
+           {
+               click1 = "Yakutsk";
+           }
+           else if (click1 == "Yakutsk")
+           {
+               click1 = "";
+               click2 = "";
+           }
+           else if (click1 != "" && (it->getOwner() == "Human"))
            {
                click2 = "Yakutsk";
            }
@@ -1566,6 +2060,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Kamchatka";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Kamchatka";
+            }
+            else if (click1 == "Kamchatka")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Kamchatka";
+            }
+        }
     }
     else if (x > 650 && y > 150
              && x < 690 && y < 190) //Irkutsk
@@ -1595,6 +2105,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Irkutsk";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Irkutsk";
+            }
+            else if (click1 == "Irkutsk")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Irkutsk";
             }
@@ -1632,6 +2158,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Mongolia";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Mongolia";
+            }
+            else if (click1 == "Mongolia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Mongolia";
+            }
+        }
     }
     else if (x > 730 && y > 200
              && x < 760 && y < 240) //Japan
@@ -1661,6 +2203,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Japan";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Japan";
+            }
+            else if (click1 == "Japan")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Japan";
             }
@@ -1698,6 +2256,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "China";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "China";
+            }
+            else if (click1 == "China")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "China";
+            }
+        }
     }
     else if (x > 560 && y > 280
              && x < 630 && y < 340) //India
@@ -1727,6 +2301,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "India";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "India";
+            }
+            else if (click1 == "India")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "India";
             }
@@ -1764,6 +2354,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Southeast Asia";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Southeast Asia";
+            }
+            else if (click1 == "Southeast Asia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Southeast Asia";
+            }
+        }
     }
     else if (x > 620 && y > 380
              && x < 680 && y < 420) //Indonesia
@@ -1793,6 +2399,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Indonesia";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Indonesia";
+            }
+            else if (click1 == "Indonesia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Indonesia";
             }
@@ -1830,6 +2452,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "New Guinea";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "New Guinea";
+            }
+            else if (click1 == "New Guinea")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "New Guinea";
+            }
+        }
     }
     else if (x > 650 && y > 430
              && x < 710 && y < 480) //Western Australia
@@ -1859,6 +2497,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "";
             }
             else if (click1 != "" && (it->getOwner() != "Human") && it->isConnectedTo(click1))
+            {
+                click2 = "Western Australia";
+            }
+        }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Western Australia";
+            }
+            else if (click1 == "Western Australia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
             {
                 click2 = "Western Australia";
             }
@@ -1897,6 +2551,22 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
                 click2 = "Eastern Australia";
             }
         }
+        else if (currTurn == "move")
+        {
+            if (click1 == "" && (it->getOwner() == "Human"))
+            {
+                click1 = "Eastern Australia";
+            }
+            else if (click1 == "Eastern Australia")
+            {
+                click1 = "";
+                click2 = "";
+            }
+            else if (click1 != "" && (it->getOwner() == "Human"))
+            {
+                click2 = "Eastern Australia";
+            }
+        }
     }
     
     if (x  > 600 && y > 570
@@ -1919,6 +2589,13 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
         battle.fightBattle(masterList, click1, click2);
         click1 = "";
         click2 = "";
+    }
+    else if (currTurn == "move" && click2 != "")
+    {
+        battle.moveArmy(masterList, click1, click2);
+        click1 = "";
+        click2 = "";
+        currTurn = "reinforce";
     }
 }
 

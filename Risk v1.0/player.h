@@ -39,6 +39,7 @@ public:
     
     int getContBonus(std::list<Territory> masterList, std::string playerName);
     
+    void handleBotTurn(std::list<Territory> &masterList, std::string playerName);
 };
 
 #endif /* player_h */
