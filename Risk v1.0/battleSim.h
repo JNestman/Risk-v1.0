@@ -30,6 +30,8 @@ public:
     int findSecond(int aR1, int aR2, int aR3, int high);
     
     void fightBattle(std::list<Territory> &masterList, std::string click1, std::string click2);
+    
+    void fightBotBattle(std::list<Territory> &masterList, std::string click1, std::string click2);
 
     void moveArmy(std::list<Territory> &masterList, std::string click1, std::string click2);
 

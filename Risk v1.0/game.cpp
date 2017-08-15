@@ -83,6 +83,14 @@ void Game::run() {
                     {
                         getClickPos(windowEvent.button.x, windowEvent.button.y, currTurn, territories, click1, click2);
                         
+                        if (currTurn == "bot")
+                        {
+                            bot1->handleBotTurn(territories);
+                            bot2->handleBotTurn(territories);
+                            bot3->handleBotTurn(territories);
+                            bot4->handleBotTurn(territories);
+                            currTurn = "reinforce";
+                        }
                         if (currTurn == "reinforce")
                         {
                             human->setOnce(true);
@@ -2580,7 +2588,7 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
         }
         else if (currTurn == "move")
         {
-            currTurn = "reinforce";
+            currTurn = "bot";
         }
     }
     
@@ -2595,7 +2603,7 @@ void Game::getClickPos(int x, int y, std::string &currTurn, std::list<Territory>
         battle.moveArmy(masterList, click1, click2);
         click1 = "";
         click2 = "";
-        currTurn = "reinforce";
+        currTurn = "bot";
     }
 }
 

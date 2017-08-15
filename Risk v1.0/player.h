@@ -39,7 +39,11 @@ public:
     
     int getContBonus(std::list<Territory> masterList, std::string playerName);
     
-    void handleBotTurn(std::list<Territory> &masterList, std::string playerName);
+    void handleBotTurn(std::list<Territory> &masterList);
+    int reinforceTerritory(std::list<Territory> masterList, std::list<std::string> connectedList);
+    bool checkInactive(std::list<Territory> masterList, std::list<std::string> connectedList);
+    std::list<Territory>::iterator getDefTerr(std::list<Territory> masterList, std::list<std::string> connectedList);
+
 };
 
 #endif /* player_h */

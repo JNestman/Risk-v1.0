@@ -174,6 +174,139 @@ void BattleSim::fightBattle(std::list<Territory> &masterList, std::string click1
 }
 
 /*********************************************************************
+ * -fightBattle will simulate the battles for the game
+ *********************************************************************/
+void BattleSim::fightBotBattle(std::list<Territory> &masterList, std::string click1, std::string click2)
+{
+    std::list<Territory>::iterator attackArmy;
+    std::list<Territory>::iterator defenceArmy;
+    for (attackArmy = masterList.begin(); attackArmy != masterList.end(); attackArmy++)
+    {
+        if (attackArmy->getName() == click1)
+            break;
+        
+    }
+    for (defenceArmy = masterList.begin(); defenceArmy != masterList.end(); defenceArmy++)
+    {
+        if (defenceArmy->getName() == click2)
+            break;
+        
+    }
+    while (attackArmy->getArmyValue() > 1 && defenceArmy->getArmyValue() > 0)
+    {
+        int aR1 = 0;
+        int aR2 = 0;
+        
+        int aR3 = 0;
+        int dR1 = 0;
+        int dR2 = 0;
+        int aH = 0;
+        int aM = 0;
+        int temp = 0;
+        
+        aR1 = (rand() % 6 + 1);
+        aR2 = (rand() % 6 + 1);
+        aR3 = (rand() % 6 + 1);
+        dR1 = (rand() % 6 + 1);
+        dR2 = (rand() % 6 + 1);
+        
+        aH = findHighest(aR1, aR2, aR3);
+        aM = findSecond(aR1, aR2, aR3, aH);
+        
+        if (dR1 < dR2)
+        {
+            temp = dR1;
+            dR1 = dR2;
+            dR2 = temp;
+        }
+        
+        if (attackArmy->getArmyValue() > 3)
+        {
+            if (defenceArmy->getArmyValue() >= 2)
+            {
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+                if (aM > dR2)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+            else
+            {
+                dR1 =(rand() % 6 + 1);
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+        }
+        else if (attackArmy->getArmyValue() == 3)
+        {
+            aH = (rand() % 6 + 1);
+            aM = (rand() % 6 + 1);
+            if (aH < aM)
+            {
+                temp = aH;
+                aH = aM;
+                aM = temp;
+            }
+            
+            if (defenceArmy->getArmyValue() >= 2)
+            {
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                if (aM > dR2)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+            else
+            {
+                dR1 =(rand() % 6 + 1);
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+        }
+        else if (attackArmy->getArmyValue() == 2)
+        {
+            aH =(rand() % 6 + 1);
+            
+            if (defenceArmy->getArmyValue() >= 2)
+            {
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+            else
+            {
+                dR1 =(rand() % 6 + 1);
+                if (aH > dR1)
+                    defenceArmy->setArmyValue(defenceArmy->getArmyValue() - 1);
+                else
+                    attackArmy->setArmyValue(attackArmy->getArmyValue() - 1);
+            }
+        }
+    }
+    
+    if (defenceArmy->getArmyValue() <= 0)
+    {
+        defenceArmy->setOwner(attackArmy->getOwner());
+        defenceArmy->setArmyValue(attackArmy->getArmyValue() / 2);
+        if (attackArmy->getArmyValue() % 2 == 0)
+            attackArmy->setArmyValue(attackArmy->getArmyValue() / 2);
+        else
+            attackArmy->setArmyValue((attackArmy->getArmyValue() - 1) / 2);
+    }
+}
+
+/*********************************************************************
  * -moveArmy will move all but one unit from one territory to another
  *  (subject to change)
  *********************************************************************/

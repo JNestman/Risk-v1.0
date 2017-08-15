@@ -19,7 +19,8 @@ private:
     int armyValue;
     std::string owner;
     std::list<std::string> connectedTo;
-public:    
+    
+public:
     //Getters and setters
     std::string getName() {return name;};
     void setName(std::string newName) { name = newName;};
