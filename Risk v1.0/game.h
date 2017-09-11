@@ -64,6 +64,8 @@ private:
     char click2Text[13] = "Attacking = ";
     char click2Display[24] = "None";
     char endButton[10] = "End Phase";
+    char victory[10] = "You Win!";
+    char loss[10] = "You Lose!";
     
     std::string currTurn;
     

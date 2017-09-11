@@ -265,7 +265,7 @@ void Game::run() {
             SDL_FreeSurface(message);
         }
         
-        //This section is testing how to orchestrate turn order
+        //This section sets the initial troop number for the player
         if (currTurn == "initial")
         {
             if (human->getOnce())
@@ -273,7 +273,7 @@ void Game::run() {
             
         }
         
-        //This section is testing how to get the army values on the board
+        //This section displays the army values on the board
         for (int i = 0; i < 42; i++)
         {
             value = value.findTerritory(i, territories);
@@ -286,13 +286,39 @@ void Game::run() {
             SDL_FreeSurface(message);
         }
         
-        
+        if (human->getNumTerritories() <= 0)
+        {
+            postText.x = 400;
+            postText.y = 70;
+            textColor = { 0, 0, 0 };
+            message = TTF_RenderText_Solid( font, loss, textColor);
+            SDL_BlitSurface(message, NULL, windowSurface, &postText);
+            SDL_FreeSurface(message);
+            
+            currTurn = "end";
+        }
+        else if (human->getNumTerritories() >= 42)
+        {
+            postText.x = 400;
+            postText.y = 70;
+            textColor = { 0, 0, 0 };
+            message = TTF_RenderText_Solid( font, victory, textColor);
+            SDL_BlitSurface(message, NULL, windowSurface, &postText);
+            SDL_FreeSurface(message);
+            
+            currTurn = "end";
+        }
         SDL_UpdateWindowSurface(window);
+        
+        if (currTurn == "end")
+        {
+            SDL_Delay( 3000 );
+            break;
+        }
     }
     
     SDL_FreeSurface(imageSurface);
     SDL_FreeSurface(windowSurface);
-    SDL_FreeSurface(message);
     
     imageSurface = NULL;
     windowSurface = NULL;
