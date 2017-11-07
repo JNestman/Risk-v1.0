@@ -13,4 +13,3 @@ int main(int argc, const char * argv[]) {
     Game newGame;
     newGame.run();
 }
-
