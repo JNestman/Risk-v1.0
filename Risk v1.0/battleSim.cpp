@@ -83,6 +83,7 @@ void BattleSim::fightBattle(std::list<Territory> &masterList, std::string click1
         aH = findHighest(aR1, aR2, aR3);
         aM = findSecond(aR1, aR2, aR3, aH);
         
+        //get the higher defensive role in the 1st slot
         if (dR1 < dR2)
         {
             temp = dR1;

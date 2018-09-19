@@ -42,8 +42,8 @@ void Player::botInitialArmy(std::list<Territory> &masterList, std::string player
 }
 
 /*********************************************************************
- * -botInitialArmy: This will set go out and set the board for the initial
- *  phase
+ * -getContBonus: this will return the number of reinforcements the human
+ *  receives for owning an entire continent
  *********************************************************************/
 int Player::getContBonus(std::list<Territory> masterList, std::string playerName)
 {

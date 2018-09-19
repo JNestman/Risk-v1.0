@@ -40,7 +40,7 @@ void Game::run() {
     
     //Give the image surface something to display
     
-    imageSurface = IMG_Load("Risk01.jpg");
+    imageSurface = IMG_Load("/Users/joshnestman/Desktop/Risk v1.0/Risk v1.0/Risk01.jpg");
     
     if (NULL == imageSurface)
     {
